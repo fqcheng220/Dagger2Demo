@@ -1,4 +1,4 @@
-1.关系
+1.三大组成部分
 @inject  成员属性上 不能为private（依赖需求方）
        @Component 只能标注接口或抽象类（依赖桥接器）
                 @Module （依赖提供方）
@@ -15,7 +15,7 @@
                  1.使用元注解@Scope自定义任意名字新注解RandomScope
                  2.在Component类名上标注@RandomScope
                    在Module的Provider方法上加注解@RandomScope
-                 3.如果需要注入依赖类成员上 则也要加注解@RandomScope
+                 //3.如果需要注入依赖类成员上 则也要加注解@RandomScope(不需要)
         跟javax @Sington注解功能一致
 
 依赖实例共享之
@@ -35,3 +35,20 @@ friendComponent.inject(friend);·
 
 依赖实例共享之
 Component 中的dependencies声明
+
+依赖实例之依赖对象图构建
+依赖实例往往是需要依赖其他依赖实例的
+构建过程：
+1.查询component所有接口方法的返回出参
+  依次按照module provide返回类型、inject构造函数匹配的优先顺序去递归寻找依赖实例之间的依赖关系
+2.查询component所有接口方法中所有入参 去入参类中寻找inject标注的成员 根据成员类型
+  依次按照module provide返回类型、inject构造函数匹配的优先顺序去递归寻找依赖实例之间的依赖关系
+3.1和2的顺序不是串行
+
+
+isssue
+1.同一个module不同的方法 是否可以用不同的scope标注？
+  component是否可以加多种scope标注支持？（可以）
+2.不相干的component可以分别拥有相同类型的module实例 所以同一个module相同的方法 是否可以用不同的scope标注？
+3.父子component为什么需要两个不同的scope标注？从源码角度解答
+4.自定义scope注解不能添加在@Inject标注的构造函数上？？？？？（测试是不能！）

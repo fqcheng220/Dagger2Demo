@@ -14,23 +14,22 @@ import javax.inject.Singleton;
  */
 public class Man {
   @Inject
-  @RandomScope
   public Car mCar;
 
   private ManComponent mManComponet;
 
   public Man() {
     mManComponet = DaggerManComponent.builder().build();
-    mManComponet.randomNameSetCar(this);
-    System.out.println("mCar=" + mCar);
-    mManComponet.randomNameSetCar(this);
-    System.out.println("mCar=" + mCar);
+//    mManComponet.randomNameSetCar(this);
+//    System.out.println("mCar=" + mCar);
+//    mManComponet.randomNameSetCar(this);
+//    System.out.println("mCar=" + mCar);
 
-    Bike bike1 = mManComponet.exposureBike();
-    System.out.println("bike1=" + bike1);
-    Bike bike2 = mManComponet.exposureBike();
-    System.out.println("bike2=" + bike2);
-    System.out.println("(bike2==bike1)=" + (bike2 == bike1));
+//    Bike bike1 = mManComponet.exposureBike();
+//    System.out.println("bike1=" + bike1);
+//    Bike bike2 = mManComponet.exposureBike();
+//    System.out.println("bike2=" + bike2);
+//    System.out.println("(bike2==bike1)=" + (bike2 == bike1));
 
     //Friend friend = new Friend();
     //mManComponet.inject(friend);
