@@ -4,6 +4,7 @@ import dagger.Component;
 import dagger.Subcomponent;
 import fqcheng220.dagger2demo.Friend;
 import fqcheng220.dagger2demo.scope.FriendScope;
+import javax.inject.Singleton;
 
 /**
  * @author fqcheng220
@@ -11,7 +12,7 @@ import fqcheng220.dagger2demo.scope.FriendScope;
  * @Description: ${todo}(用一句话描述该文件做什么)
  * @date 2019/3/8 21:13
  */
-@FriendScope
+@Singleton
 @Subcomponent
 public interface FriendComponent {
   void inject(Friend friend);

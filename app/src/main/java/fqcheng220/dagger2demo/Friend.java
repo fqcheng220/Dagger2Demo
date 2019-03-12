@@ -18,14 +18,14 @@ public class Friend {
   private FriendComponent mFriendComponent;
 
   public Friend(){
-    System.out.println("this is a Friend");
+    System.out.println("Friend constructor:this is a Friend");
   }
 
   public Friend(ManComponent manComponent){
-    System.out.println("this is a Friend from manComponent");
+    System.out.println("Friend constructor:this is a Friend from manComponent");
     mFriendComponent = manComponent.friendComponent().build();
     mFriendComponent.inject(this);
-    System.out.println("this is a Friend from manComponent mCar="+mCar);
+    System.out.println("Friend constructor:this is a Friend from manComponent mCar="+mCar);
   }
 
   @Inject

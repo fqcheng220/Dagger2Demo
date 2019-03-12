@@ -12,10 +12,10 @@ import javax.inject.Inject;
 public class Bike {
   @Inject
   public Bike(){
-    this("this is a bike from constructor");
+    this("Bike constructor:this is a bike from constructor");
   }
 
   public Bike(String msg){
-    System.out.println(msg);
+    System.out.println("Bike constructor:"+msg);
   }
 }

@@ -8,7 +8,6 @@ import fqcheng220.dagger2demo.module.EngineGeneratorModule;
 import fqcheng220.dagger2demo.module.ManModule;
 import fqcheng220.dagger2demo.module.SonModule;
 import fqcheng220.dagger2demo.scope.RandomScope;
-import javax.inject.Singleton;
 
 /**
  * @author fqcheng220
@@ -21,7 +20,8 @@ import javax.inject.Singleton;
 public interface ManComponent {
   void randomNameSetCar(Man man);
 
-//  Car exposureCar();
+  //专为SonDepComponent添加
+  Car exposureCar();
 
   Bike exposureBike();
 

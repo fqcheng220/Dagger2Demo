@@ -13,9 +13,9 @@ import fqcheng220.dagger2demo.scope.RandomScope;
 
 public class Car {
   private EngineGenerator mEngineGenerator;
-  @Inject
+  //@Inject
   public Car(){
-    System.out.println("this is a car");
+    System.out.println("Car constructor:default");
   }
 
   /**
@@ -25,6 +25,6 @@ public class Car {
    */
   public Car(EngineGenerator engineGenerator){
     mEngineGenerator = engineGenerator;
-    System.out.println("this is a car that needs EngineGenerator");
+    System.out.println("Car constructor:this is a car that needs EngineGenerator");
   }
 }

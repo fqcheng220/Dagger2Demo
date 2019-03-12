@@ -2,7 +2,6 @@ package fqcheng220.dagger2demo;
 
 import fqcheng220.dagger2demo.component.ManComponent;
 import fqcheng220.dagger2demo.component.SonComponent;
-import fqcheng220.dagger2demo.module.ManModule;
 import fqcheng220.dagger2demo.module.SonModule;
 import javax.inject.Inject;
 
@@ -21,10 +20,14 @@ public class Son {
   @Inject
   public String mExclusiveGift;
 
+  public Son(){
+    System.out.println("Son constructor:default");
+  }
+
   public Son(ManComponent manComponent){
-    System.out.println("this is a Son from manComponent");
-    mSonComponent = manComponent.getSonComponent(new SonModule("test"),new ManModule());
+    System.out.println("Son constructor:this is a Son from manComponent");
+    mSonComponent = manComponent.getSonComponent(new SonModule("test"));
     mSonComponent.inject(this);
-    System.out.println("this is a Son from manComponent mCar="+mCar+",mExclusiveGift="+mExclusiveGift);
+    System.out.println("Son constructor:this is a Son from manComponent mCar="+mCar+",mExclusiveGift="+mExclusiveGift);
   }
 }

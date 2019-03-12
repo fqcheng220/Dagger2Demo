@@ -11,14 +11,17 @@ import javax.inject.Singleton;
  * @date 2019/3/12 11:16
  */
 @Module
-public class SonModule {
+public class SonDepModule {
   private String mGift;
-  public SonModule(String s){
-    System.out.println("SonModule:this is a SonModule constructor "+s);
+  public SonDepModule(String s){
+    System.out.println("SonDepModule constructor:this is a SonDepModule "+s);
     mGift = s;
   }
 
-  //@Singleton
+  //public SonDepModule(){
+  //  System.out.println("SonDepModule constructor:default");
+  //}
+
   @Provides
   String provideGift(){
     return mGift;

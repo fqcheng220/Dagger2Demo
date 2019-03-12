@@ -6,10 +6,10 @@ package fqcheng220.dagger2demo;
 
 public class EngineGenerator {
     public EngineGenerator(){
-        System.out.println("this is a EngineGenerator");
+        System.out.println("EngineGenerator constructor:this is a EngineGenerator");
     }
 
     public EngineGenerator(String msg){
-        System.out.println(msg);
+        System.out.println("EngineGenerator constructor:"+msg);
     }
 }

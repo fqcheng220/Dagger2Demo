@@ -23,8 +23,8 @@ public class ManModule {
    */
   @Provides
   @RandomScope
-  Car provideCar(){
-    return new Car(new EngineGenerator());
+  Car provideCar(EngineGenerator engineGenerator){
+    return new Car(engineGenerator);
   }
 
   @Provides

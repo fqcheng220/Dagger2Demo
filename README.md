@@ -1,4 +1,7 @@
 
+
+
+
 # 1.三大组成部分
 @inject  成员属性上 不能为private（依赖需求方）
        @Component 只能标注接口或抽象类（依赖桥接器）
@@ -19,27 +22,53 @@
     跟javax包中@Sington注解功能一致
 
 ## 2. 依赖实例共享之 @SubComponent
-   
+使用方式一：
 
-父组件跟子组件scope不能相同
+ 1. 在子Component类名上加注解@Subcomponent，定义内部接口，提供返回类型为子Component类的方法
 
- 1. 使用元注解@Scope自定义任意名字新注解FriendScope跟父组件scope注解不同
-
- 2. 在子Component类名上加注解@Subcomponent
-
- 3. 在父Component接口里加方法
+ 2. 在父Component接口里加方法
                    子Component类名.Builder 方法名();
 
- 4. 在父Component关联的提供依赖的Module类上加注解
+ 3. 在父Component关联的提供依赖的Module类上加注解
                 @Module(subcomponents = 子Component类名.class)
- 5. 调用方式
- ManComponent manComponent = DaggerManComponent.builder().build();
-    FriendComponent friendComponent = manComponent.friendComponent().build();
-    friendComponent.inject(friend);·
+   调用方式
+
+```
+ManComponent manComponent = DaggerManComponent.builder().build();
+FriendComponent friendComponent = manComponent.friendComponent().build();
+friendComponent.inject(friend);·
+```
+
+使用方式二（个人推荐）：
+
+ 1. 在子Component类名上加注解@Subcomponent
+
+ 2. 在父Component接口里加方法
+                   子Component 任意方法名(需要的Module入参)   
+                   入参是可选项 如果子Component没有指定Module注解或者Module类有默认构造函数 则不需指定入参，否则需要指定
+                   如`SonComponent getSonComponent(SonModule sonModule);`
+```
+ManComponent manComponent = DaggerManComponent.builder().build();
+SonComponent  sonComponent = manComponent.getSonComponent(new SonModule("test"));
+sonComponent.inject(son);·
+```
 
 ## 3. 依赖实例共享之 Component 中的dependencies声明
-功能与@SubComponent一致 子组件也是需要跟父组件标注不同的scope
-只是用法不同
+功能与@SubComponent一致 
+用法差异点：
+1.**父Component必须显式暴露子Component需要的依赖**（虽然module已经有提供依赖）
+2.子Component需要跟父Component标注不同的scope（如果父Component声明了scope的话，子Component必须声明）
+3.子Component的Scope 不能是 @Singleton
+
+使用方式：
+1.子Component类名加注解@Component(dependecies=父组件.class)
+2.父Component提供暴露子Component需要的依赖的方法
+   如Car exposureCar();//专为SonDepComponent添加
+
+    Son another = new Son();
+    SonDepComponent sonDepComponent = DaggerSonDepComponent.builder().sonDepModule(new SonDepModule("test")).manComponent(mManComponet).build();
+    sonDepComponent.inject(another);
+
 # 3.依赖对象图构建
 依赖实例往往是需要依赖其他依赖实例的
 构建过程：
@@ -52,5 +81,9 @@
 1.同一个module不同的方法 是否可以用不同的scope标注？
   component是否可以加多种scope标注支持？（可以）
 2.不相干的component可以分别拥有相同类型的module实例 所以同一个module相同的方法 是否可以用不同的scope标注？
-3.父子component为什么需要两个不同的scope标注？从源码角度解答
+3.depenencies 父子component为什么需要两个不同的scope标注？从源码角度解答
 4.自定义scope注解不能添加在@Inject标注的构造函数上？？？？？（测试是不能！）
+
+
+参考
+https://www.jianshu.com/p/9703a931c7e7

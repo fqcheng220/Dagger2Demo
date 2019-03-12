@@ -9,6 +9,6 @@ package fqcheng220.dagger2demo;
 
 public class Vehicle {
   public Vehicle(){
-    System.out.println("this is a Vehicle");
+    System.out.println("Vehicle constructor:this is a Vehicle");
   }
 }
