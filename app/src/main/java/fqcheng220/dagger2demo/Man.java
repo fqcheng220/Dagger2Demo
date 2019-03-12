@@ -34,5 +34,7 @@ public class Man {
     //Friend friend = new Friend();
     //mManComponet.inject(friend);
     Friend friend = new Friend(mManComponet);
+
+    Son son = new Son(mManComponet);
   }
 }

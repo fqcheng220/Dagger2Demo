@@ -6,6 +6,7 @@ import fqcheng220.dagger2demo.Car;
 import fqcheng220.dagger2demo.Man;
 import fqcheng220.dagger2demo.module.EngineGeneratorModule;
 import fqcheng220.dagger2demo.module.ManModule;
+import fqcheng220.dagger2demo.module.SonModule;
 import fqcheng220.dagger2demo.scope.RandomScope;
 import javax.inject.Singleton;
 
@@ -25,4 +26,6 @@ public interface ManComponent {
   Bike exposureBike();
 
   FriendComponent.Builder friendComponent();
+
+  SonComponent getSonComponent(SonModule sonModule);
 }
