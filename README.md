@@ -25,7 +25,7 @@
 ## 2. 依赖实例共享之 @SubComponent
 使用方式一：
 
- 1. 在子Component类名上加注解@Subcomponent，定义内部接口，提供返回类型为子Component类的方法
+ 1. 在子Component类名上加注解@Subcomponent，定义内部接口Builder，标注@Subcomponent.Builder，提供返回类型为子Component类的方法，如果需要传递Module，则还需要提供参数类型为module类，返回类型为Builder的方法
 
  2. 在父Component接口里加方法
                    子Component类名.Builder 方法名();
