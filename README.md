@@ -78,7 +78,7 @@ sonComponent.inject(son);·
  2. 查询component所有接口方法中所有入参 去入参类中寻找inject标注的成员 根据成员类型   依次按照module provide返回类型、inject构造函数匹配的优先顺序去递归寻找依赖实例之间的依赖关系
  3. 1和2的顺序不是串行
 
-# isssue
+# issue
 
  1. 同一个module不同的方法 是否可以用不同的scope标注？（可以，同一个module中的不同方法可以添加不同的scope标注 但是要求相应的component也必须包含所有scope标注，否则编译错误）  
     component是否可以加多种scope标注支持？（可以）
