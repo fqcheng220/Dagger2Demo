@@ -1,8 +1,8 @@
-package fqcheng220.dagger2demo.module;
+package fqcheng220.dagger2demo.di.module;
 
 import dagger.Module;
 import dagger.Provides;
-import javax.inject.Singleton;
+import fqcheng220.dagger2demo.utils.Logger;
 
 /**
  * @author fqcheng220
@@ -12,9 +12,10 @@ import javax.inject.Singleton;
  */
 @Module
 public class SonDepModule {
+  private final String TAG = getClass().getSimpleName();
   private String mGift;
   public SonDepModule(String s){
-    System.out.println("SonDepModule constructor:this is a SonDepModule "+s);
+    Logger.d(TAG,"constructor:this is a "+s);
     mGift = s;
   }
 

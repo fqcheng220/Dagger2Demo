@@ -1,12 +1,8 @@
-package fqcheng220.dagger2demo.component;
+package fqcheng220.dagger2demo.di.component;
 
-import dagger.Component;
 import dagger.Subcomponent;
-import fqcheng220.dagger2demo.Friend;
-import fqcheng220.dagger2demo.Son;
-import fqcheng220.dagger2demo.module.SonModule;
-import fqcheng220.dagger2demo.scope.RandomScope;
-import javax.inject.Singleton;
+import fqcheng220.dagger2demo.di.module.SonModule;
+import fqcheng220.dagger2demo.di.test.Son;
 
 /**
  * @author fqcheng220

@@ -1,4 +1,4 @@
-package fqcheng220.dagger2demo.scope;
+package fqcheng220.dagger2demo.di.scope;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -14,5 +14,5 @@ import javax.inject.Scope;
 @Documented
 @Retention(value = RetentionPolicy.RUNTIME)
 @Scope
-public @interface SonDepScope {
+public @interface FriendScope {
 }

@@ -1,10 +1,9 @@
-package fqcheng220.dagger2demo.component;
+package fqcheng220.dagger2demo.di.component;
 
 import dagger.Component;
-import fqcheng220.dagger2demo.Son;
-import fqcheng220.dagger2demo.module.SonDepModule;
-import fqcheng220.dagger2demo.scope.SonDepScope;
-import javax.inject.Singleton;
+import fqcheng220.dagger2demo.di.module.SonDepModule;
+import fqcheng220.dagger2demo.di.test.Son;
+import fqcheng220.dagger2demo.di.scope.SonDepScope;
 
 /**
  * @author fqcheng220
@@ -13,6 +12,7 @@ import javax.inject.Singleton;
  * @date 2019/3/12 13:58
  */
 @SonDepScope
+//  @RandomScope
 @Component(modules = SonDepModule.class,dependencies = ManComponent.class)
 public interface SonDepComponent {
   void inject(Son son);

@@ -1,13 +1,14 @@
-package fqcheng220.dagger2demo.component;
+package fqcheng220.dagger2demo.di.component;
 
 import dagger.Component;
-import fqcheng220.dagger2demo.Bike;
-import fqcheng220.dagger2demo.Car;
-import fqcheng220.dagger2demo.Man;
-import fqcheng220.dagger2demo.module.EngineGeneratorModule;
-import fqcheng220.dagger2demo.module.ManModule;
-import fqcheng220.dagger2demo.module.SonModule;
-import fqcheng220.dagger2demo.scope.RandomScope;
+import fqcheng220.dagger2demo.di.module.EngineGeneratorModule;
+import fqcheng220.dagger2demo.di.module.ManModule;
+import fqcheng220.dagger2demo.di.module.SonModule;
+import fqcheng220.dagger2demo.di.test.Bike;
+import fqcheng220.dagger2demo.di.test.Car;
+import fqcheng220.dagger2demo.di.test.Man;
+import fqcheng220.dagger2demo.di.scope.AnotherScope;
+import fqcheng220.dagger2demo.di.scope.RandomScope;
 
 /**
  * @author fqcheng220
@@ -16,6 +17,7 @@ import fqcheng220.dagger2demo.scope.RandomScope;
  * @date 2019/3/8 17:51
  */
 @RandomScope
+@AnotherScope
 @Component(modules = {ManModule.class,EngineGeneratorModule.class})
 public interface ManComponent {
   void randomNameSetCar(Man man);

@@ -1,9 +1,9 @@
-package fqcheng220.dagger2demo.module;
+package fqcheng220.dagger2demo.di.module;
 
 import dagger.Module;
 import dagger.Provides;
-import fqcheng220.dagger2demo.EngineGenerator;
-import fqcheng220.dagger2demo.scope.RandomScope;
+import fqcheng220.dagger2demo.di.test.EngineGenerator;
+import fqcheng220.dagger2demo.di.scope.RandomScope;
 
 /**
  * Created by Administrator on 2019/3/9 0009.

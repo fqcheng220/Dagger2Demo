@@ -1,8 +1,6 @@
-package fqcheng220.dagger2demo;
+package fqcheng220.dagger2demo.di.test;
 
-import javax.inject.Inject;
-
-import fqcheng220.dagger2demo.scope.RandomScope;
+import fqcheng220.dagger2demo.utils.Logger;
 
 /**
  * @author fqcheng220
@@ -12,10 +10,11 @@ import fqcheng220.dagger2demo.scope.RandomScope;
  */
 
 public class Car {
+  private final String TAG = getClass().getSimpleName();
   private EngineGenerator mEngineGenerator;
   //@Inject
   public Car(){
-    System.out.println("Car constructor:default");
+    Logger.d(TAG,"constructor:default");
   }
 
   /**
@@ -25,6 +24,6 @@ public class Car {
    */
   public Car(EngineGenerator engineGenerator){
     mEngineGenerator = engineGenerator;
-    System.out.println("Car constructor:this is a car that needs EngineGenerator");
+    Logger.d(TAG,"constructor:this is a car that needs EngineGenerator");
   }
 }

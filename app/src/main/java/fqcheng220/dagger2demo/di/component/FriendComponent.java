@@ -1,9 +1,9 @@
-package fqcheng220.dagger2demo.component;
+package fqcheng220.dagger2demo.di.component;
 
-import dagger.Component;
 import dagger.Subcomponent;
-import fqcheng220.dagger2demo.Friend;
-import fqcheng220.dagger2demo.scope.FriendScope;
+import fqcheng220.dagger2demo.di.module.FriendModule;
+import fqcheng220.dagger2demo.di.test.Friend;
+import fqcheng220.dagger2demo.di.scope.FriendScope;
 import javax.inject.Singleton;
 
 /**
@@ -12,12 +12,14 @@ import javax.inject.Singleton;
  * @Description: ${todo}(用一句话描述该文件做什么)
  * @date 2019/3/8 21:13
  */
+@FriendScope
 @Singleton
-@Subcomponent
+@Subcomponent(modules = FriendModule.class)
 public interface FriendComponent {
   void inject(Friend friend);
   @Subcomponent.Builder
   interface Builder{
     FriendComponent build();
+    Builder setFriendModule(FriendModule friendModule);
   }
 }

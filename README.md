@@ -78,12 +78,15 @@ sonComponent.inject(son);·
  3. 1和2的顺序不是串行
 
 # isssue
-1.同一个module不同的方法 是否可以用不同的scope标注？
+1.同一个module不同的方法 是否可以用不同的scope标注？（可以，同一个module中的不同方法可以添加不同的scope标注 但是要求相应的component也必须包含所有scope标注，否则编译错误）
   component是否可以加多种scope标注支持？（可以）
-2.不相干的component可以分别拥有相同类型的module实例 所以同一个module相同的方法 是否可以用不同的scope标注？
+2.不相干的component可以分别拥有相同类型的module实例 所以同一个module相同的方法 是否可以用不同的scope标注？（测试不能，每个module方法只能有一个scope标注，否则编译错误）
 3.depenencies 父子component为什么需要两个不同的scope标注？从源码角度解答
-4.自定义scope注解不能添加在@Inject标注的构造函数上？？？？？（测试是不能！）
+4.自定义scope注解不能添加在@Inject标注的构造函数上？？？？？（测试是不能！但是可以加在类上 不可以加在构造函数上，否则编译错误）
+5.module复用 component拆分的最佳实践？？？
 
 
 参考
+https://github.com/google/dagger  （官网）
 https://www.jianshu.com/p/9703a931c7e7
+https://github.com/xitu/gold-miner/blob/master/TODO/Dependency-Injection-with-Dagger-2.md

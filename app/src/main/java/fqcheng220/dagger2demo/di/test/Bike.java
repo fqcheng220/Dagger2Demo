@@ -1,5 +1,6 @@
-package fqcheng220.dagger2demo;
+package fqcheng220.dagger2demo.di.test;
 
+import fqcheng220.dagger2demo.utils.Logger;
 import javax.inject.Inject;
 
 /**
@@ -10,12 +11,13 @@ import javax.inject.Inject;
  */
 
 public class Bike {
+  private final String TAG = getClass().getSimpleName();
   @Inject
   public Bike(){
-    this("Bike constructor:this is a bike from constructor");
+    Logger.d(TAG,"constructor:this is a bike from constructor");
   }
 
   public Bike(String msg){
-    System.out.println("Bike constructor:"+msg);
+    Logger.d(TAG,"constructor:"+msg);
   }
 }

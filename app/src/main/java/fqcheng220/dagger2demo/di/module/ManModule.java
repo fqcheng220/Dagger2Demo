@@ -1,13 +1,13 @@
-package fqcheng220.dagger2demo.module;
+package fqcheng220.dagger2demo.di.module;
 
 import dagger.Module;
 import dagger.Provides;
-import fqcheng220.dagger2demo.Bike;
-import fqcheng220.dagger2demo.Car;
-import fqcheng220.dagger2demo.EngineGenerator;
-import fqcheng220.dagger2demo.component.FriendComponent;
-import fqcheng220.dagger2demo.scope.RandomScope;
-import javax.inject.Singleton;
+import fqcheng220.dagger2demo.di.test.Bike;
+import fqcheng220.dagger2demo.di.test.Car;
+import fqcheng220.dagger2demo.di.test.EngineGenerator;
+import fqcheng220.dagger2demo.di.component.FriendComponent;
+import fqcheng220.dagger2demo.di.scope.AnotherScope;
+import fqcheng220.dagger2demo.di.scope.RandomScope;
 
 /**
  * @author fqcheng220
@@ -27,6 +27,7 @@ public class ManModule {
     return new Car(engineGenerator);
   }
 
+  @AnotherScope
   @Provides
   Bike provideBike(){
     return new Bike("this is a bike from ManModule");
