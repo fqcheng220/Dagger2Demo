@@ -93,3 +93,8 @@ sonComponent.inject(son);·
 https://github.com/google/dagger  （官网）
 https://www.jianshu.com/p/9703a931c7e7
 https://github.com/xitu/gold-miner/blob/master/TODO/Dependency-Injection-with-Dagger-2.md
+<<<<<<< 9c4cbe1c200446f09184091bc18d5256650ee89c
+=======
+其他相关AutoService javapoet
+Dagger2检测工具http://www.cnblogs.com/tiantianbyconan/p/5193437.html
+>>>>>>> lesson2 dagger接入android项目（使用dagger库）增加@BindInstance用法

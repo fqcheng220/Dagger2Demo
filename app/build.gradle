@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'kotlin-kapt'//需要用kapt命令替代annotationProcessor 但是kapt dagger2编译期报错信息太少
+apply plugin: 'kotlin-kapt'//需要用kapt命令替代annotationProcessor 但是kapt dagger2编译期报错信息太少
 
 android {
   compileSdkVersion 26
@@ -36,6 +36,14 @@ dependencies {
     force = true
   }
 
-  compile 'com.google.dagger:dagger:2.11-rc2'
-  annotationProcessor 'com.google.dagger:dagger-compiler:2.11-rc2'
+  //dagger
+  compile 'com.google.dagger:dagger:2.25.3'
+  kapt 'com.google.dagger:dagger-compiler:2.25.3'
+
+  // dagger.android
+  implementation "com.google.dagger:dagger-android:2.25.3"
+  implementation "com.google.dagger:dagger-android-support:2.25.3"
+  kapt "com.google.dagger:dagger-android-processor:2.25.3"
+//  annotationProcessor 'com.google.dagger:dagger-android-support:2.25.3'
+
 }
