@@ -31,7 +31,7 @@
                    子Component类名.Builder 方法名();
 
  3. 在父Component关联的提供依赖的Module类上加注解
-                @Module(subcomponents = 子Component类名.class)
+                @Module(subcomponents = 子Component类名.class) （测试发现可以省略该步骤）
    调用方式
 
 ```
@@ -76,7 +76,8 @@ sonComponent.inject(son);·
 
  1. 查询component所有接口方法的返回出参   依次按照module provide返回类型、inject构造函数匹配的优先顺序去递归寻找依赖实例之间的依赖关系
  2. 查询component所有接口方法中所有入参 去入参类中寻找inject标注的成员 根据成员类型   依次按照module provide返回类型、inject构造函数匹配的优先顺序去递归寻找依赖实例之间的依赖关系
- 3. 1和2的顺序不是串行
+ 3. 1和2的顺序不是串行  
+ （需要从源码角度分析构建过程 还有部分module可以是抽象的原因）
 
 # issue
 
@@ -93,8 +94,7 @@ sonComponent.inject(son);·
 https://github.com/google/dagger  （官网）
 https://www.jianshu.com/p/9703a931c7e7
 https://github.com/xitu/gold-miner/blob/master/TODO/Dependency-Injection-with-Dagger-2.md
-<<<<<<< 9c4cbe1c200446f09184091bc18d5256650ee89c
-=======
+
 其他相关AutoService javapoet
 Dagger2检测工具http://www.cnblogs.com/tiantianbyconan/p/5193437.html
->>>>>>> lesson2 dagger接入android项目（使用dagger库）增加@BindInstance用法
+
