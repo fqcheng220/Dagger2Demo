@@ -3,6 +3,7 @@ package fqcheng220.dagger2demo.lesson3.di.moduleExtra;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import fqcheng220.dagger2demo.lesson3.di.module.Lesson3ActivityAModule;
+import fqcheng220.dagger2demo.lesson3.di.scope.ActivityAScope;
 import fqcheng220.dagger2demo.lesson3.ui.Lesson3ActivityA;
 
 /**
@@ -13,6 +14,7 @@ import fqcheng220.dagger2demo.lesson3.ui.Lesson3ActivityA;
  */
 @Module
 public abstract class Lesson3ActivityBindModule {
+  @ActivityAScope
   @ContributesAndroidInjector(modules={Lesson3FragmentBindModule.class, Lesson3ActivityAModule.class})
   abstract Lesson3ActivityA getComponentLesson3ActivityA();
 

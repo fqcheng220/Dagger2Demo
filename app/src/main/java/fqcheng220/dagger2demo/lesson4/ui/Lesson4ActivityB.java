@@ -1,17 +1,19 @@
-package fqcheng220.dagger2demo.lesson2.ui;
+package fqcheng220.dagger2demo.lesson4.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import fqcheng220.dagger2demo.R;
-import fqcheng220.dagger2demo.lesson2.HasComponent;
-import fqcheng220.dagger2demo.lesson2.di.bean.ActivityABean;
-import fqcheng220.dagger2demo.lesson2.di.bean.AppBean;
-import fqcheng220.dagger2demo.lesson2.di.bean.AppBean2;
-import fqcheng220.dagger2demo.lesson2.di.bean.AppBean3;
-import fqcheng220.dagger2demo.lesson2.di.component.Lesson2ActivityAComponent;
-import fqcheng220.dagger2demo.lesson2.di.component.Lesson2AppComponent;
+import fqcheng220.dagger2demo.lesson4.HasComponent;
+import fqcheng220.dagger2demo.lesson4.di.bean.ActivityBBean;
+import fqcheng220.dagger2demo.lesson4.di.bean.AppBean;
+import fqcheng220.dagger2demo.lesson4.di.bean.AppBean2;
+import fqcheng220.dagger2demo.lesson4.di.bean.AppBean3;
+import fqcheng220.dagger2demo.lesson4.di.bean.IDemoPresenter;
+import fqcheng220.dagger2demo.lesson4.di.bean.IDemoView;
+import fqcheng220.dagger2demo.lesson4.di.component.Lesson4ActivityBComponent;
+import fqcheng220.dagger2demo.lesson4.di.component.Lesson4AppComponent;
+import fqcheng220.dagger2demo.lesson4.di.module.Lesson4ActivityBModule;
 import fqcheng220.dagger2demo.utils.Logger;
 import javax.inject.Inject;
 
@@ -21,27 +23,28 @@ import javax.inject.Inject;
  * @Description: (用一句话描述该文件做什么)
  * @date 2020/1/2 13:09
  */
-public class Lesson2ActivityA extends Lesson2BaseActivity implements HasComponent<Lesson2ActivityAComponent> {
+public class Lesson4ActivityB extends Lesson4BaseActivity implements HasComponent<Lesson4ActivityBComponent>, IDemoView {
   @Inject public AppBean mAppBean;
   @Inject public AppBean2 mAppBean2;
   @Inject public AppBean3 mAppBean3;
-  @Inject public ActivityABean mActivityABean;
+  @Inject public ActivityBBean mActivityBBean;
+  @Inject public IDemoPresenter mIDemoPresenter;
 
-  private Lesson2ActivityAComponent mLesson2ActivityAComponent;
+  private Lesson4ActivityBComponent mLesson2ActivityBComponent;
   private int mCurFragClzIndex = -1;
   private final Class[] clzArr = new Class[] {
-      Lesson2FragmentAA.class, Lesson2FragmentAB.class
+      Lesson4FragmentBA.class, Lesson4FragmentBB.class
   };
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_lesson2_a);
+    setContentView(R.layout.activity_lesson4_b);
 
     if (getApplication() instanceof HasComponent) {
-      mLesson2ActivityAComponent = ((HasComponent<Lesson2AppComponent>) getApplication()).getComponent().getLesson2ActivityAComponent().build();
+      mLesson2ActivityBComponent = ((HasComponent<Lesson4AppComponent>) getApplication()).getComponent().getLesson2ActivityBComponent(new Lesson4ActivityBModule(this));
     }
-    if (mLesson2ActivityAComponent != null) {
-      mLesson2ActivityAComponent.inject(this);
+    if (mLesson2ActivityBComponent != null) {
+      mLesson2ActivityBComponent.inject(this);
     }
     checkInjectResult();
 
@@ -49,13 +52,6 @@ public class Lesson2ActivityA extends Lesson2BaseActivity implements HasComponen
     findViewById(R.id.btn_switch).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         switchFragment();
-      }
-    });
-    findViewById(R.id.btn_to_activityB).setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        Intent intent = new Intent();
-        intent.setClass(Lesson2ActivityA.this,Lesson2ActivityB.class);
-        startActivity(intent);
       }
     });
   }
@@ -75,10 +71,15 @@ public class Lesson2ActivityA extends Lesson2BaseActivity implements HasComponen
     Logger.d(TAG, "checkInjectResult " + "mAppBean=" + mAppBean);
     Logger.d(TAG, "checkInjectResult " + ",mAppBean2=" + mAppBean2);
     Logger.d(TAG, "checkInjectResult " + ",mAppBean3=" + mAppBean3);
-    Logger.d(TAG, "checkInjectResult " + ",mActivityABean=" + mActivityABean);
+    Logger.d(TAG, "checkInjectResult " + ",mActivityBBean=" + mActivityBBean);
+    mIDemoPresenter.doSomething("");
   }
 
-  @Override public Lesson2ActivityAComponent getComponent() {
-    return mLesson2ActivityAComponent;
+  @Override public Lesson4ActivityBComponent getComponent() {
+    return mLesson2ActivityBComponent;
+  }
+
+  @Override public void callback(int code) {
+
   }
 }

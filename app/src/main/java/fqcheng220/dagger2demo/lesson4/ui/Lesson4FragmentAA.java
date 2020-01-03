@@ -1,14 +1,16 @@
-package fqcheng220.dagger2demo.lesson3.ui;
+package fqcheng220.dagger2demo.lesson4.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import dagger.android.support.AndroidSupportInjection;
 import fqcheng220.dagger2demo.R;
-import fqcheng220.dagger2demo.lesson3.di.bean.ActivityABean;
-import fqcheng220.dagger2demo.lesson3.di.bean.AppBean;
-import fqcheng220.dagger2demo.lesson3.di.bean.AppBean2;
-import fqcheng220.dagger2demo.lesson3.di.bean.AppBean3;
-import fqcheng220.dagger2demo.lesson3.di.bean.FragmentAABean;
+import fqcheng220.dagger2demo.lesson4.HasComponent;
+import fqcheng220.dagger2demo.lesson4.di.bean.ActivityABean;
+import fqcheng220.dagger2demo.lesson4.di.bean.AppBean;
+import fqcheng220.dagger2demo.lesson4.di.bean.AppBean2;
+import fqcheng220.dagger2demo.lesson4.di.bean.AppBean3;
+import fqcheng220.dagger2demo.lesson4.di.bean.FragmentAABean;
+import fqcheng220.dagger2demo.lesson4.di.component.Lesson4ActivityAComponent;
+import fqcheng220.dagger2demo.lesson4.di.component.Lesson4FragmentAAComponent;
 import fqcheng220.dagger2demo.utils.Logger;
 import javax.inject.Inject;
 
@@ -18,7 +20,7 @@ import javax.inject.Inject;
  * @Description: (用一句话描述该文件做什么)
  * @date 2020/1/2 13:09
  */
-public class Lesson3FragmentAA extends Lesson3BaseFragment {
+public class Lesson4FragmentAA extends Lesson4BaseFragment {
   @Inject
   public AppBean mAppBean;
   @Inject
@@ -30,18 +32,26 @@ public class Lesson3FragmentAA extends Lesson3BaseFragment {
   @Inject
   public FragmentAABean mFragmentAABean;
 
+  private Lesson4FragmentAAComponent mLesson2FragmentAComponent;
+
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    AndroidSupportInjection.inject(this);
-    checkInjectResult();
   }
 
   @Override protected int getLayoutId() {
-    return R.layout.fragment_lesson3_aa;
+    return R.layout.fragment_lesson4_aa;
   }
 
   @Override public void onResume() {
     super.onResume();
+    if(mActivity instanceof HasComponent){
+      mLesson2FragmentAComponent = ((HasComponent<Lesson4ActivityAComponent>)mActivity).getComponent()
+          .getLesson2FragmentAAComponent();
+    }
+    if(mLesson2FragmentAComponent != null){
+      mLesson2FragmentAComponent.inject(this);
+    }
+    checkInjectResult();
   }
 
   @Override protected void checkInjectResult() {

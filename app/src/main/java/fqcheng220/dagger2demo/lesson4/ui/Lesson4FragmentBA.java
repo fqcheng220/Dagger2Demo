@@ -1,16 +1,16 @@
-package fqcheng220.dagger2demo.lesson3.ui;
+package fqcheng220.dagger2demo.lesson4.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import fqcheng220.dagger2demo.R;
-import fqcheng220.dagger2demo.lesson3.HasComponent;
-import fqcheng220.dagger2demo.lesson3.di.bean.ActivityBBean;
-import fqcheng220.dagger2demo.lesson3.di.bean.AppBean;
-import fqcheng220.dagger2demo.lesson3.di.bean.AppBean2;
-import fqcheng220.dagger2demo.lesson3.di.bean.AppBean3;
-import fqcheng220.dagger2demo.lesson3.di.bean.FragmentBABean;
-import fqcheng220.dagger2demo.lesson3.di.component.Lesson3ActivityBComponent;
-import fqcheng220.dagger2demo.lesson3.di.component.Lesson3FragmentBAComponent;
+import fqcheng220.dagger2demo.lesson4.HasComponent;
+import fqcheng220.dagger2demo.lesson4.di.bean.ActivityBBean;
+import fqcheng220.dagger2demo.lesson4.di.bean.AppBean;
+import fqcheng220.dagger2demo.lesson4.di.bean.AppBean2;
+import fqcheng220.dagger2demo.lesson4.di.bean.AppBean3;
+import fqcheng220.dagger2demo.lesson4.di.bean.FragmentBABean;
+import fqcheng220.dagger2demo.lesson4.di.component.Lesson4ActivityBComponent;
+import fqcheng220.dagger2demo.lesson4.di.component.Lesson4FragmentBAComponent;
 import fqcheng220.dagger2demo.utils.Logger;
 import javax.inject.Inject;
 
@@ -20,7 +20,7 @@ import javax.inject.Inject;
  * @Description: (用一句话描述该文件做什么)
  * @date 2020/1/2 13:09
  */
-public class Lesson3FragmentBA extends Lesson3BaseFragment {
+public class Lesson4FragmentBA extends Lesson4BaseFragment {
   @Inject
   public AppBean mAppBean;
   @Inject
@@ -32,27 +32,26 @@ public class Lesson3FragmentBA extends Lesson3BaseFragment {
   @Inject
   public FragmentBABean mFragmentBABean;
 
-  private Lesson3FragmentBAComponent mLesson2FragmentAComponent;
+  private Lesson4FragmentBAComponent mLesson2FragmentAComponent;
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+  }
+
+  @Override protected int getLayoutId() {
+    return R.layout.fragment_lesson4_ba;
+  }
+
+  @Override public void onResume() {
+    super.onResume();
     if(mActivity instanceof HasComponent){
-      mLesson2FragmentAComponent = ((HasComponent<Lesson3ActivityBComponent>)mActivity).getComponent()
-          .getLesson2FragmentBAComponent()
-          .build();
+      mLesson2FragmentAComponent = ((HasComponent<Lesson4ActivityBComponent>)mActivity).getComponent()
+          .getLesson2FragmentBAComponent();
     }
     if(mLesson2FragmentAComponent != null){
       mLesson2FragmentAComponent.inject(this);
     }
     checkInjectResult();
-  }
-
-  @Override protected int getLayoutId() {
-    return R.layout.fragment_lesson3_ba;
-  }
-
-  @Override public void onResume() {
-    super.onResume();
   }
 
   @Override protected void checkInjectResult() {

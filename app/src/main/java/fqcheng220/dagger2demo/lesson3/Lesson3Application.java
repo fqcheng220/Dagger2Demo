@@ -8,6 +8,7 @@ import dagger.android.HasAndroidInjector;
 import fqcheng220.dagger2demo.lesson3.di.component.DaggerLesson3AppComponent;
 import fqcheng220.dagger2demo.lesson3.di.component.Lesson3AppComponent;
 import fqcheng220.dagger2demo.lesson3.di.module.Lesson3AppModule;
+import javax.inject.Inject;
 
 /**
  * @author fqcheng220
@@ -17,6 +18,7 @@ import fqcheng220.dagger2demo.lesson3.di.module.Lesson3AppModule;
  */
 public class Lesson3Application extends Application implements HasComponent<Lesson3AppComponent>, HasAndroidInjector {
   Lesson3AppComponent mDaggerLesson2AppComponent;
+  @Inject
   DispatchingAndroidInjector<Activity> mDispatchingAndroidInjector;
 
   @Override public void onCreate() {
